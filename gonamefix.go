@@ -33,16 +33,21 @@ var Analyzer = NewAnalyzer(Config{
 	CaseSensitive: false,
 })
 
+// GetAnalyzers returns the analyzer for the golangci-lint plugin system
+func GetAnalyzers() []*analysis.Analyzer {
+	return []*analysis.Analyzer{Analyzer}
+}
+
 // Config represents configuration for the gonamefix linter.
 type Config struct {
 	// Check contains mapping of long names to short names [original, replacement]
-	Check [][]string
+	Check [][]string `mapstructure:"check"`
 	// ExcludeFiles contains file patterns to exclude
-	ExcludeFiles []string
+	ExcludeFiles []string `mapstructure:"exclude-files"`
 	// ExcludeDirs contains directory patterns to exclude
-	ExcludeDirs []string
+	ExcludeDirs []string `mapstructure:"exclude-dirs"`
 	// CaseSensitive controls whether the matching is case sensitive (default: false for camelCase)
-	CaseSensitive bool
+	CaseSensitive bool `mapstructure:"case-sensitive"`
 }
 
 type namePattern struct {

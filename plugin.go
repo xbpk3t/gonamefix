@@ -13,3 +13,8 @@ func GetLinter() *analysis.Analyzer {
 func New() *analysis.Analyzer {
 	return Analyzer
 }
+
+// GetAnalyzers returns all analyzers provided by this plugin
+func GetAnalyzers() []*analysis.Analyzer {
+	return []*analysis.Analyzer{Analyzer}
+}
