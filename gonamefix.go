@@ -33,10 +33,6 @@ var Analyzer = NewAnalyzer(Config{
 	CaseSensitive: false,
 })
 
-// GetAnalyzers returns the analyzer for the golangci-lint plugin system
-func GetAnalyzers() []*analysis.Analyzer {
-	return []*analysis.Analyzer{Analyzer}
-}
 
 // Config represents configuration for the gonamefix linter.
 type Config struct {
