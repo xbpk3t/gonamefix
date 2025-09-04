@@ -7,5 +7,18 @@ import (
 )
 
 func main() {
-	singlechecker.Main(gonamefix.Analyzer)
+	// Create analyzer with test configuration
+	config := gonamefix.Config{
+		Check: [][]string{
+			{"request", "req"},
+			{"response", "res"},
+			{"configuration", "config"},
+		},
+		ExcludeFiles:  []string{"*.pb.go", "*_test.go"},
+		ExcludeDirs:   []string{"vendor", "node_modules", ".git"},
+		CaseSensitive: false,
+	}
+	
+	analyzer := gonamefix.NewAnalyzer(config)
+	singlechecker.Main(analyzer)
 }
