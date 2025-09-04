@@ -1,0 +1,102 @@
+---
+# golangci-lint configuration file example with gonamefix
+# https://golangci-lint.run/usage/configuration/
+
+version: 2
+
+linters:
+  enable:
+    - gonamefix
+
+linters-settings:
+  gonamefix:
+    # Check contains mapping of long names to short names [original, replacement]
+    # Each entry should be a pair of [original_name, replacement_name]
+    check:
+      - [request, req]
+      - [response, res]
+      - [parameter, param]
+      - [temporary, temp]
+      - [source, src]
+      - [result, res]
+      - [database, db]
+      - [password, pwd]
+      - [user, usr]
+      - [server, srv]
+      - [service, svc]
+      - [configuration, config]
+      - [function, func]
+      - [object, obj]
+      - [argument, arg]
+      - [variable, var]
+      - [calculate, calc]
+      - [maximum, max]
+      - [minimum, min]
+      - [address, addr]
+      - [reference, ref]
+      - [original, orig]
+      - [previous, pre]
+      - [current, cur]
+      - [buffer, buf]
+      - [length, len]
+      - [image, img]
+      - [number, num]
+      - [text, txt]
+      - [dictionary, dict]
+      - [sequence, seq]
+      - [character, char]
+      - [timestamp, ts]
+      - [position, pos]
+      - [pointer, ptr]
+      - [index, idx]
+      - [value, val]
+      - [initialize, init]
+      - [destination, dst]
+      - [count, cnt]
+      - [error, err]
+      - [package, pkg]
+      - [command, cmd]
+      - [message, msg]
+      - [information, info]
+      - [context, ctx]
+      - [version, ver]
+      - [utility, util]
+    
+    # File patterns to exclude (glob patterns)
+    exclude-files:
+      - "*.pb.go"
+      - "*_test.go"
+      - "*.gen.go"
+      - "*.generated.go"
+    
+    # Directory patterns to exclude
+    exclude-dirs:
+      - vendor
+      - node_modules
+      - .git
+      - testdata
+      - examples
+    
+    # Whether matching should be case sensitive (default: false for camelCase support)
+    case-sensitive: false
+    
+    # Path to schema file (optional)
+    # If specified, will load additional mappings from YAML file
+    # schema-file: "schema.yml"
+
+issues:
+  exclude-rules:
+    # Exclude gonamefix checks in test files
+    - path: _test\.go
+      linters:
+        - gonamefix
+    
+    # Exclude gonamefix checks in generated files
+    - path: \.pb\.go$
+      linters:
+        - gonamefix
+    
+    # Exclude gonamefix checks in vendor directory
+    - path: vendor/
+      linters:
+        - gonamefix
