@@ -25,14 +25,13 @@ func NewAnalyzer(config Config) *analysis.Analyzer {
 	}
 }
 
-// Analyzer is the default analyzer for gonamefix with no predefined mappings
+// Analyzer is the default analyzer for gonamefix - requires configuration
 var Analyzer = NewAnalyzer(Config{
-	Check:         [][]string{}, // No default mappings
+	Check:         [][]string{}, // No default mappings - must be configured
 	ExcludeFiles:  []string{"*.pb.go", "*_test.go"},
 	ExcludeDirs:   []string{"vendor", "node_modules", ".git"},
 	CaseSensitive: false,
 })
-
 
 // Config represents configuration for the gonamefix linter.
 type Config struct {

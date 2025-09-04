@@ -2,4 +2,4 @@ version: v2.4.0
 plugins:
   - module: 'github.com/xbpk3t/gonamefix'
     import: 'github.com/xbpk3t/gonamefix'
-    version: 'v0.1.1'
+    version: 'v0.1.2'
